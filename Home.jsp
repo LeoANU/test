@@ -11,6 +11,6 @@ Hi user
 
 
 <a href="CandidateServlet2">check candidate</a>
-
+<a href="InterviewServlet2">check interview</a>
 </body>
 </html>
