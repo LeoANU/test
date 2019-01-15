@@ -1,20 +1,56 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
-
-<title>homepage for administrator</title>
+<meta charset="UTF-8">
+<title>homepage</title>
 </head>
 <body>
-Hi administrator
+Hi user
+<%
+String uname=request.getParameter("uname");
+out.print(uname);
+%>
 
+<center>
+		<br>
+		<br>
+		<h1 style="color:red">candidate</h1>
+		<table border="2">
+		<%int i=1; %>
+		  <tr>
+		    <th>Candidate</th>
+		    <th>Email</th>
+		    <th>Date</th>
+		    <th>Start time</th>
+		    <th>End time</th>
+		    <th>Location</th>
+		    <th>Interviewer</th>
+		    <th>Resume</th>
+		    <th>comment</th>
+		  </tr>
+		
+		  <c:forEach items="${plist}" var="pl" >
+			<%if(i%10==1){ %>
+			<tr>
+			<%} %>
+			<%if(i%10==8){ %>
+			<td><a href="upload/${pl}">${pl}</a></td>
+			<%}else if(i%10==0){ %>
+			<td><a href="comment.jsp?uname=<%=uname %>&id=${pl}">add comment</a></td>
+			</tr>
+			
+			<%}else{ %>
+			<td>${pl}</td>
+			<%}  
+			i++;%>
+		  </c:forEach>
+		 </table>
+</center>
 
-<a href="upload.jsp">add candidate</a>
-<a href="CandidateServlet">check candidate</a>
- 
-<a href="InterviewServlet">check interview</a>
-<a href="interview.jsp">add interview</a>
+<a href="login.jsp">log out</a>
+
 </body>
 </html>

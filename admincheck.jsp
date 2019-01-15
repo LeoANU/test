@@ -19,20 +19,18 @@
  Statement stmt=conn.createStatement();
  String queryNumberSQL="SELECT * from admin where (account='"+account+"' or email='"+account+"') and password='"+password+"'";
  ResultSet rs=stmt.executeQuery(queryNumberSQL);
- boolean flag=false;
+ 
  if(rs.next()){
-	 flag=true;
-	 }else{
-	 flag=false;
-	 }
-
-	 if(flag){
+	 String uname=rs.getString(1);
 	%>
-	<jsp:forward page="Home2.jsp"></jsp:forward>
+	<jsp:forward page="CandidateServlet"></jsp:forward>
 	<%
 	 }else{
 	%>
-	<jsp:forward page="login_failed.jsp"></jsp:forward>
+	<script type="text/javascript" language="javascript">
+		alert("failed");
+		window.document.location.href="adminlogin.jsp";
+	</script>
 	<%
 	 }
 	

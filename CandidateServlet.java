@@ -79,7 +79,7 @@ public class CandidateServlet extends HttpServlet{
 			
 			
 
-			 String sql="SELECT * from candidate";
+			 String sql="SELECT distinct candidate,email,resume from process";
 			 ResultSet rs=st.executeQuery(sql);
 			 while(rs.next()){
 				 String candidate=rs.getString(1);
@@ -96,11 +96,11 @@ public class CandidateServlet extends HttpServlet{
 			e.printStackTrace();
 
 		}
-		System.out.println(list);
+
 		request.setAttribute("mylist",list);
 
 
-		request.getRequestDispatcher("/checkcandidate.jsp").forward(request, response);
+		request.getRequestDispatcher("/Home.jsp").forward(request, response);
 
 
 

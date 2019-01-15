@@ -27,9 +27,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/CandidateServlet2")
+@WebServlet("/CommentServlet")
 @MultipartConfig
-public class CandidateServlet2 extends HttpServlet{
+public class CommentServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	
 	private static String jdbcDriver = "com.mysql.jdbc.Driver";
@@ -64,6 +64,12 @@ public class CandidateServlet2 extends HttpServlet{
 
 	}
 
+
+
+	
+
+	
+
 	
 	@Override
 	protected void service(HttpServletRequest request, HttpServletResponse response) //
@@ -71,32 +77,28 @@ public class CandidateServlet2 extends HttpServlet{
 			throws ServletException, IOException {
 
         List<String> list=new ArrayList<String>();
-        String uname=request.getParameter("uname");
+
+	
+
+
 		try {
-			 String sql="SELECT interviewer,candidate,email,date,start,end,location,id,resume,comment from process where interviewer like'%*"+uname+"%'";
+			
+			
+			 String id=request.getParameter("id");
+			 String sql="SELECT * from interview where id='"+id+"'";
 			 ResultSet rs=st.executeQuery(sql);
 			 while(rs.next()){
-				 String interviewer=rs.getString(1);
-				 String candidate=rs.getString(2);
-				 String email=rs.getString(3);
-				 String date=rs.getString(4);
-				 String start=rs.getString(5);
-				 String end=rs.getString(6);
-				 String location=rs.getString(7);
-				 String id=rs.getString(8);
-				 String resume=rs.getString(9);
-				 String comment=rs.getString(10);
-				 list.add(candidate);
-				 list.add(email);
-				 list.add(date);
-				 list.add(start);
-				 list.add(end);
-				 list.add(location);
-				 list.add(interviewer);	
-				 list.add(resume);
-				 list.add(comment);
-				 list.add(id);
-				 			 
+				 String c1=rs.getString(5);
+				 String c2=rs.getString(6);
+				 String c3=rs.getString(7);
+				 String c4=rs.getString(8);
+				 String c5=rs.getString(9);
+				 list.add(c1);
+				 list.add(c2);
+				 list.add(c3);
+				 list.add(c4);
+				 list.add(c5);
+				 
 			 }
 
 		} catch (Exception e) {
@@ -104,11 +106,11 @@ public class CandidateServlet2 extends HttpServlet{
 			e.printStackTrace();
 
 		}
+	
+		request.setAttribute("mylist",list);
 
-		request.setAttribute("plist",list);
 
-
-		request.getRequestDispatcher("/Home2.jsp?uname="+uname+"").forward(request, response);
+		request.getRequestDispatcher("/comment.jsp").forward(request, response);
 
 
 

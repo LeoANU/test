@@ -16,24 +16,28 @@
 		<%int i=1; %>
 		  <tr>
 		    <th>Interviewer</th>
-		    <th>Candidate</th>
-		    <th>Time</th>
+		    <th>Date</th>
+		    <th>Start time</th>
+		    <th>End time</th>
+		    <th>Location</th>
+		    <th>Comment</th>
 		  </tr>
 		
 		  <c:forEach items="${mylist}" var="my" >
-			<%if(i%3==1){ %>
+			<%if(i%6==1){ %>
 			<tr>
 			<%} %>
 			<td>${my}</td>
-			<%if(i%3==0){ %>
+			<%
+			if(i%6==0){ %>
 			</tr>
-			<%}  
+			<%} 
 			i++;%>
 		  </c:forEach>
 		 </table>
 </center>
 
-<a href="Home2.jsp">back</a>
-<a href="interview.jsp">add interview</a>
+<a href="CandidateServlet">back</a>
+
 </body>
 </html>

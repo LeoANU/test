@@ -9,11 +9,8 @@
 </head>
 <body>
 <%
-String fname=request.getParameter("fname");
-String path=request.getRealPath("/upload");
-File f=new File(path+"\\"+fname);
+String id=request.getParameter("id");
 
-f.delete();
 
 
 Class.forName("com.mysql.jdbc.Driver");
@@ -21,12 +18,12 @@ Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/intervi
 Statement stmt=conn.createStatement();
 
 
-String mysql="delete from process where resume='"+fname+"'";
+String mysql="delete from interview where id='"+id+"'";
 stmt.executeUpdate(mysql);
 stmt.close();
 conn.close();
 %>
-<jsp:forward page="CandidateServlet"></jsp:forward>
+<jsp:forward page="InterviewServlet"></jsp:forward>
 	
 </body>
 </html>

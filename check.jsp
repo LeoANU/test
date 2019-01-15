@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.sql.*" %>
+<%@ page import="java.sql.*,java.io.*,java.util.*" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +13,6 @@
 <%
  String username=request.getParameter("username");
  String password=request.getParameter("password");
-
  Class.forName("com.mysql.jdbc.Driver");
  Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/login", "root", "123456");
  Statement stmt=conn.createStatement();
@@ -21,14 +20,20 @@
  ResultSet rs=stmt.executeQuery(queryNumberSQL);
  
  
-
 	 if(rs.next()){
+		 String uname=rs.getString(1);
+		 
 	%>
-	<jsp:forward page="Home.jsp"></jsp:forward>
+	<jsp:forward page="CandidateServlet2">
+		<jsp:param name="uname" value="<%=uname %>"/>
+	</jsp:forward>
 	<%
 	 }else{
 	%>
-	<jsp:forward page="login_failed.jsp"></jsp:forward>
+	<script type="text/javascript" language="javascript">
+		alert("failed");
+		window.document.location.href="login.jsp";
+	</script>
 	<%
 	 }
 	

@@ -84,16 +84,22 @@ public class InterviewServlet extends HttpServlet{
 		try {
 			
 			
-
-			 String sql="SELECT * from interview";
-			 ResultSet rs=st.executeQuery(sql);
-			 while(rs.next()){
+			String fname=request.getParameter("fname");
+			String sql="SELECT interviewer,date,start,end,location,comment from process where resume='"+fname+"'";
+			ResultSet rs=st.executeQuery(sql);
+			while(rs.next()){
 				 String interviewer=rs.getString(1);
-				 String candidate=rs.getString(2);
-				 String time=rs.getString(3);
+				 String date=rs.getString(2);
+				 String start=rs.getString(3);
+				 String end=rs.getString(4);
+				 String location=rs.getString(5);
+				 String comment=rs.getString(6);
 				 list.add(interviewer);
-				 list.add(candidate);
-				 list.add(time);
+				 list.add(date);
+				 list.add(start);
+				 list.add(end);
+				 list.add(location);
+				 list.add(comment);
 				 
 			 }
 

@@ -10,17 +10,13 @@
 <h1>new candidate</h1>
 
 <script type="text/javascript">	
-	if("${info}".length==0){
 		alert("please make sure that the file name is unique")
-	}else{
-		alert("${info}")
-		}
 </script>
 <form method="post" action="UploadServlet" enctype="multipart/form-data">
 <table>
 <tr>
 <td></td>
-<td><h1>resume upload</h1></td>
+<td><h1>Basic information</h1></td>
 </tr>
 <tr>
 <td>candidate name</td>
@@ -36,9 +32,10 @@
 </tr>
 <tr>
 <td></td>
-<td><input type="submit" value="upload"/></td>
+<td><input type="submit" value="next"/></td>
 </tr>
 </table>
+
 </form>
  <a href="Home2.jsp">back</a>
 </body>

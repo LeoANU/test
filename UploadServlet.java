@@ -23,6 +23,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
  
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -40,31 +42,25 @@ public class UploadServlet extends HttpServlet{
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) 
             throws ServletException, IOException {
+    	
         try {
       
-            String cname=request.getParameter("cname");     
-            String email=request.getParameter("email");
-             
             Part part=request.getPart("file");
             String name=part.getHeader("content-disposition");
             String root=request.getServletContext().getRealPath("/upload");
-            String fname=name.substring(name.lastIndexOf("\\")+1, name.length()-1);   
+            String fname=name.substring(name.lastIndexOf("\\")+1, name.length()-1); 
             String filename=root+"\\"+fname;
             part.write(filename);
-            
-            Class.forName("com.mysql.jdbc.Driver");
-			Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/interview", "root", "123456");
-			Statement st = conn.createStatement();	
-            String mysql="insert into candidate(candidate,email,resume) values('"+cname+"','"+email+"','"+fname+"')";
-		 	st.executeUpdate(mysql);
-            
-		 	request.setAttribute("info", "saved");
+        
+
+            request.getRequestDispatcher("/interview.jsp?fname="+fname+"").forward(request, response);
+		 	
         } catch (Exception e) {
             e.printStackTrace();
-            request.setAttribute("info", "failed");
         }
         
-        request.getRequestDispatcher("/upload.jsp").forward(request, response);
+
+		
     }
     
 }

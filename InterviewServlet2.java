@@ -72,7 +72,7 @@ public class InterviewServlet2 extends HttpServlet{
 
 	
 	@Override
-	protected void service(HttpServletRequest request, HttpServletResponse response) //
+	protected void service(HttpServletRequest request, HttpServletResponse response) 
 
 			throws ServletException, IOException {
 
@@ -84,16 +84,18 @@ public class InterviewServlet2 extends HttpServlet{
 		try {
 			
 			
-
+			 String uname=request.getParameter("uname");
 			 String sql="SELECT * from interview";
 			 ResultSet rs=st.executeQuery(sql);
 			 while(rs.next()){
 				 String interviewer=rs.getString(1);
 				 String candidate=rs.getString(2);
 				 String time=rs.getString(3);
+				 String id=rs.getString(4);
 				 list.add(interviewer);
 				 list.add(candidate);
 				 list.add(time);
+				 list.add(id);
 				 
 			 }
 

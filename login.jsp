@@ -7,6 +7,7 @@
 <title>Sign in</title>
 </head>
 <body>
+
 	<center>
 		<a href="adminlogin.jsp">admin</a>
 		<br>

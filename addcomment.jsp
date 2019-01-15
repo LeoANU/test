@@ -4,25 +4,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset=UTF-8">
+<meta charset=UTF-8>
 <title>add</title>
 </head>
 <body>
 
 
 
-
 <%
-String name=request.getParameter("name");
-String email=request.getParameter("email");
 
+String comment=request.getParameter("comment");
+String uname=request.getParameter("uname");
+String id=request.getParameter("id");
 Class.forName("com.mysql.jdbc.Driver");
 Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/interview", "root", "123456");
 Statement stmt=conn.createStatement();
-String sql="insert into candidate(candidate,email) values('"+name+"','"+email+"')";
+String sql="update process set comment=concat(ifnull(comment,''),'*','"+comment+"','\r\n') where id='"+id+"'";
 stmt.executeUpdate(sql);
 %>
-<jsp:forward page="Home2.jsp"></jsp:forward>
+
+<jsp:forward page="CandidateServlet2">
+<jsp:param name="uname" value="<%=uname %>"/>
+</jsp:forward>
 <% 
 stmt.close();
 conn.close();

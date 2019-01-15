@@ -21,13 +21,15 @@
 		  </tr>
 		
 		  <c:forEach items="${mylist}" var="my" >
-			<%if(i%3==1){ %>
+			<%if(i%4==1){ %>
 			<tr>
-			<%} %>
-			<td>${my}</td>
-			<%if(i%3==0){ %>
+			<%} 
+			if(i%4==0){ %>
+			<td><a href="CommentServlet?id=${my}">view comment</a></td>
 			</tr>
-			<%}  
+			<%} else{%>
+			<td>${my}</td>
+			<%} 
 			i++;%>
 		  </c:forEach>
 		 </table>

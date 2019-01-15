@@ -28,6 +28,8 @@
 		</form>
 			
 	</center>
+	
+	<a href="login.jsp">back</a>
 
 </body>
 </html>

@@ -80,8 +80,13 @@
 	 }else{
 		String mysql="insert into login(username,password,email,firstname,lastname) values('"+username+"','"+password+"','"+email+"','"+firstname+"','"+lastname+"')";
 	 	stmt.executeUpdate(mysql);
+	 	
 	 	%>
-	 	<jsp:forward page="Home.jsp"></jsp:forward>
+	 	
+	 	<script type="text/javascript" language="javascript">
+		alert("saved");
+		window.document.location.href="login.jsp";
+		</script>
 	 	<% 
 
 	 }
