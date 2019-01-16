@@ -37,6 +37,6 @@
 </table>
 
 </form>
- <a href="Home2.jsp">back</a>
+ <a href="CandidateServlet">back</a>
 </body>
 </html>

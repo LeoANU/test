@@ -12,7 +12,7 @@
 
 <%
 List<String> list=new ArrayList<String>();
-String interviewer=request.getParameter("interviewer");
+String interviewer=request.getParameter("user");
 if(interviewer==null){interviewer="";}
 String cname=request.getParameter("cname");
 String email=request.getParameter("email");
@@ -52,7 +52,7 @@ while(rs.next()){
 		<td></td>
 		<td>
 		<c:forEach items="<%=list%>" var="st" >
-		<a href="interview.jsp?interviewer=<%=interviewer%>*${st}&cname=<%=cname%>&email=<%=email%>&fname=<%=fname%>">${st}</a>
+		<a href="interview.jsp?user=<%=interviewer%>*${st}&cname=<%=cname%>&email=<%=email%>&fname=<%=fname%>">${st}</a>
 		</c:forEach>
 		</td>
 		</tr>

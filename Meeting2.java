@@ -38,9 +38,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.activation.*;
 
-@WebServlet("/Meeting")
+@WebServlet("/Meeting2")
 
-public class Meeting extends HttpServlet
+public class Meeting2 extends HttpServlet
 {
 
 
@@ -153,7 +153,7 @@ public void service(HttpServletRequest request, HttpServletResponse response)
 				
 		}
 		sendEmail(msg);
-		request.getRequestDispatcher("interview.jsp").forward(request, response);
+		request.getRequestDispatcher("CandidateServlet").forward(request, response);
 }
 
 

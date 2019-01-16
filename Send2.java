@@ -35,9 +35,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.activation.*;
 
-@WebServlet("/Send")
+@WebServlet("/Send2")
 
-public class Send extends HttpServlet
+public class Send2 extends HttpServlet
 {
 
 
@@ -157,6 +157,6 @@ public void service(HttpServletRequest request, HttpServletResponse response)
       mex.printStackTrace();
    }
    
-   request.getRequestDispatcher("Meeting").forward(request, response);
+   request.getRequestDispatcher("Meeting2").forward(request, response);
 }
 }

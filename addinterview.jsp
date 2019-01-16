@@ -30,8 +30,8 @@ stmt.executeUpdate(sql);
 stmt.close();
 conn.close();
  %>
- <a href="interview.jsp?cname=<%=cname%>&email=<%=email%>&fname=<%=fname%>">more interview</a>
+ <a href="Send?cname=<%=cname%>&fname=<%=fname%>&email=<%=email%>&location=<%=location%>&date=<%=date%>&start=<%=start%>&end=<%=end%>&interviewer=<%=interviewer%>">more interview</a>
  <br>
- <a href="Send?email=<%=email%>&location=<%=location%>&date=<%=date%>&start=<%=start%>&end=<%=end%>">finish</a>
+ <a href="Send2?email=<%=email%>&location=<%=location%>&date=<%=date%>&start=<%=start%>&end=<%=end%>&interviewer=<%=interviewer%>">finish</a>
  </body>
  </html>
